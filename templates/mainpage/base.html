@@ -1,0 +1,196 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Advance Database Systems</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="shortcut icon" href="{{ url_for('static',filename='img/favicon.ico')}}">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/mainpage.css')}}" > 
+
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/metisMenu.min.css')}}" > 
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/sb-admin-2.css')}}" > 
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/font-awesome.min.css')}}" > 
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/bootstrap.min.css')}}" > 
+   
+    <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>   
+    <script src="{{ url_for('static', filename='js/mainpage.js') }}"></script> 
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script> 
+    <script src="{{ url_for('static', filename='js/metisMenu.min.js') }}"></script> 
+    <script src="{{ url_for('static', filename='js/sb-admin-2.js') }}"></script> 
+
+    
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/dataTables.min.css')}}"/>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/dataTables.min.js') }}"></script>
+
+  </head>
+<body>
+  
+<!-- .......................................... -->
+
+
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+      <div class="navbar-header">
+          
+          <a class="navbar-brand" >JuanDB</a>
+      </div>
+      <!-- /.navbar-header -->
+
+      <ul class="nav navbar-top-links navbar-right">
+          <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                  <i class="fa fa-file fa-fw"></i> <i class="fa fa-caret-down"></i>
+              </a>
+              <ul class="dropdown-menu dropdown-messages">
+                  <li>
+                          <div class='container'>
+                            <form action = "http://localhost/uploader" method = "POST"  enctype = "multipart/form-data">
+
+                                <div class="form-group">
+                                    <i class="fa fa-folder-open fa-fw"></i>
+                                    <input type="file" name="file" id="file">
+                                <span class="pull-right text-muted"></span>
+                                </div>
+                                <div class="form-group">
+                                    <b>Select target table</b>
+                                    <br>
+                                    <select name="selectedTable">
+                                        <option value="student">STUDENT</option>
+                                        <option value="studenthistory">STUDENTHISTORY</option>
+                                        <option value="course">COURSE</option>
+                                        <option value="courseoffering">COURSEOFFERING</option>
+                                        <option value="studcourse">STUDCOURSE</option>
+                                      </select>
+                                </div>
+                                <div class="form-group">
+                                    <input type = "submit" >
+                                </div>
+                                
+                            </form>
+                          </div>
+                      
+                  </li>
+                  <li class="divider"></li>
+                  <li>
+                      <a href="#">
+                          <div>
+                              <i class="fa fa-sign-out fa-fw"></i>
+                              <strong>Exit</strong>
+                              <span class="pull-right text-muted">
+                                  
+                              </span>
+                          </div>
+                      </a>
+                  </li>
+              </ul>
+              <!-- /.dropdown-messages -->
+          </li>
+          
+      </ul>
+      <!-- /.navbar-static-side -->
+  </nav>
+
+
+   <!--     renew             ----------------------------------------------   -->
+
+<div class="container">
+    <br>
+
+   <div class="row">
+        <div class="col-sm-4">   
+            <div class="panel panel-black">
+                <div class="panel-heading">
+                    Database Schema
+                </div>
+                <!-- /.panel-heading -->
+                <div class="panel-body">
+                    <div class="table-responsive" >
+                        <table class="table table-hover">
+                        <tbody>
+                            <tr><td id="student">STUDENT</td></tr>
+                            <tr><td id ="studenthistory">STUDENTHISTORY</td></tr>
+                            <tr><td id ="studcourse">STUDCOURSE</td></tr>
+                            <tr><td id ="course">COURSE</td></tr>
+                            <tr><td id ="courseoffering">COURSEOFFERING</td></tr>
+                        </tbody>
+                        </table>                              
+                    </div>
+                <!-- /.table-responsive -->
+                </div>
+                <!-- /.panel-body -->
+            </div>
+            <!-- /.panel --> 
+        </div>
+        <div class="col-sm-8">
+                <div class="panel panel-black">
+                        <div class="panel-heading">SQL Query</div>
+                        <div class="panel-body">
+                            <form id="inputform">
+                                <!-- <input type="text" name="qry" id="qry" style="overflow:auto; resize:none; font-family:'Courier New', Courier, monospace; " rows="5" class="form-control" ></textarea> -->
+                                <div class="form-group">
+                                    <label for=""></label>
+                                    <textarea name="qry" id="qry" form="inputform" style="overflow:auto; resize:none; font-family:'Courier New', Courier, monospace; " rows="3" class="form-control" ></textarea>
+                                    <!-- <input type="text" class="form-control" name="qry" id="qry" aria-describedby="helpId" placeholder="..."> --> 
+                                    <small id="helpId" class="form-text text-mute d"style="float: right;margin-top:3px;">Select, Delete, Insert Statements &nbsp;&nbsp;<button type="submit" class="btn btn-primary">Run Query</button></small>
+                                </div>  
+                            </form>
+                        </div>
+                    </div> 
+
+        </div>
+   </div>
+   <br>
+   <br>
+   <div class="row">
+        <div class="col-sm-4">
+            <div class="panel panel-black">
+                        <div class="panel-heading">Table Attributes</div>
+                     
+                    <!-- /.panel-heading -->
+                    <div class="panel-body" id="schematarget" name="schematarget" ></div> <!-- maintarget-->               
+                     
+            </div>
+
+        </div>
+
+        <div class="col-sm-8">
+                
+                <div class="panel panel-default">
+                    <!-- /.panel-heading -->
+                    <div class="panel-body" id="maintarget" name="maintarget" ></div> <!-- maintarget--> 
+                             
+                </div>
+                <p style="font-size: 10px; color: green;"><span id="qtime"></span></p>
+        </div>
+    </div>
+
+</div> <!-- container -->
+
+
+  <!--     renew             ----------------------------------------------   -->
+
+
+  
+  <!-- Modal -->
+  <div class="modal fade" id="loadingScreen" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+          <div class="modal-content">
+        
+              <div class="modal-body">
+                  <center>
+                  <img src="{{ url_for('static',filename='img/loading.gif')}}">
+                  </center>
+              </div>
+              
+          </div>
+      </div>
+  </div>
+
+
+
+
+
+</body> 
+

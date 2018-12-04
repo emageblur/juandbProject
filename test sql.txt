@@ -1,0 +1,50 @@
+conditions and operator (walang negation)
+= (string,date,int)
+< (date,int)
+> (date,int)
+>= (date,int)
+<= (date,int)
+and
+or
+
+SELECT --------
+SELECT * FROM Student;
+SELECT StudNo from Student;
+SELECT StudNo, Degree from Student;
+SELECT * FROM Student WHERE StudNo = "1234-12345";
+SELECT * FROM Student WHERE StudNo = "1234-12345" AND Degree = "BSCS";
+
+DELETE --------
+DELETE FROM Student;
+DELETE FROM Student WHERE StudNo = "1234-12345";
+DELETE FROM Student WHERE StudNo = "1234-12345" AND Degree = "BSCS";
+
+INSERT --------
+student
+INSERT INTO Student VALUES ("2018-10101","JUAN","2010-01-02","BSIT","IS",9);
+INSERT INTO Student (studno,studentname,birthday,degree,major,unitsearned) VALUES ("2018-10101","JUAN","2010-01-02","BSIT","IS",9);
+course
+INSERT INTO Course VALUES ("it 101","it fundamentals","magcode kunti",3,1,"2nd");
+INSERT INTO Course (cno, ctitle, cdesc, noofunits, haslab, semoffered) VALUES ("it 101","it fundamentals","magcode kunti",3,1,"2nd");
+courseoffering
+INSERT INTO CourseOffering VALUES ("2nd","2018-2019","it 101","z99","12:30",50);
+INSERT INTO CourseOffering (semester,acadyear,cno,section,time,maxstud) VALUES ("2nd","2018-2019","it 101","z99","12:30",50);
+studcourse
+INSERT INTO STUDCOURSE VALUES ("2018-10101","it 101","2nd","2018-2019");
+INSERT INTO STUDCOURSE (studno,cno,semester,acadyear) VALUES ("2018-10101","it 101","2nd","2018-2019");
+studenthistory
+INSERT INTO STUDENTHISTORY VALUES ("2018-10101","pinalo si teacher","pinalo narin lang siya","2018-12-12","2018-12-25");
+INSERT INTO STUDENTHISTORY (studno,description,action,datefiled,dateresolved) VALUES ("2018-10101","pinalo si teacher","pinalo narin lang siya","2018-12-12","2018-12-25");
+
+"""
+student
+studno,studentname,birthday,degree,major,unitsearned
+course
+cno, ctitle, cdesc, noofunits, haslab, semoffered
+courseoffering
+semester,acadyear,cno,section,time,maxstud
+studcourse
+studno,cno,semester,acadyear
+studenthistory
+studno,description,action,datefiled,dateresolved
+"""
